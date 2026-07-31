@@ -1,0 +1,600 @@
+/*==================================================
+PARTNERS CORP
+MAIN PAGE
+RESPONSIVE.CSS
+==================================================*/
+
+
+/*==================================================
+TABLETS
+==================================================*/
+
+@media (max-width: 1000px) {
+
+
+    /* NAVBAR */
+
+    .logo img {
+
+        width: 230px;
+
+    }
+
+
+    .nav-links {
+
+        gap: 28px;
+
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        min-height: 700px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: clamp(
+
+            3rem,
+
+            7vw,
+
+            5rem
+
+        );
+
+    }
+
+
+    /* CATEGORÍAS */
+
+    .talent-category {
+
+        min-height: 430px;
+
+    }
+
+
+    .category-content {
+
+        left: 32px;
+
+        right: 32px;
+
+        bottom: 32px;
+
+    }
+
+
+    /* WHY */
+
+    .why-grid {
+
+        gap: 18px;
+
+    }
+
+
+}
+
+
+/*==================================================
+TABLETS PEQUEÑAS
+==================================================*/
+
+@media (max-width: 768px) {
+
+
+    /* NAVBAR */
+
+    .navbar {
+
+        height: 75px;
+
+    }
+
+
+    .nav-container {
+
+        width: 90%;
+
+    }
+
+
+    .logo img {
+
+        width: 190px;
+
+    }
+
+
+    .nav-links {
+
+        display: none;
+
+        position: absolute;
+
+        top: 75px;
+
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px 0;
+
+        flex-direction: column;
+
+        gap: 22px;
+
+        background: rgba(
+
+            5,
+
+            5,
+
+            5,
+
+            .98
+
+        );
+
+        border-bottom: 1px solid var(--border);
+
+    }
+
+
+    .nav-links.active {
+
+        display: flex;
+
+    }
+
+
+    .menu-toggle {
+
+        display: block;
+
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        min-height: 680px;
+
+        height: auto;
+
+        padding: 130px 0 80px;
+
+    }
+
+
+    .hero-content {
+
+        padding-top: 0;
+
+    }
+
+
+    .hero-badge {
+
+        margin-bottom: 22px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: clamp(
+
+            2.5rem,
+
+            8vw,
+
+            4.5rem
+
+        );
+
+        letter-spacing: -1.5px;
+
+    }
+
+
+    .hero p {
+
+        max-width: 600px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .hero-buttons {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    /* TALENTOS */
+
+    .talents-section {
+
+        padding: 80px 0;
+
+    }
+
+
+    .section-title {
+
+        margin-bottom: 40px;
+
+    }
+
+
+    .section-title h2 {
+
+        font-size: 2.4rem;
+
+    }
+
+
+    .talent-categories {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .talent-category.full {
+
+        grid-column: span 1;
+
+    }
+
+
+    .talent-category {
+
+        min-height: 430px;
+
+    }
+
+
+    /* WHY */
+
+    .why-section {
+
+        padding: 70px 0;
+
+    }
+
+
+    .why-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* CTA */
+
+    .cta-section {
+
+        padding: 80px 0;
+
+    }
+
+
+}
+
+
+/*==================================================
+MÓVILES
+==================================================*/
+
+@media (max-width: 500px) {
+
+
+    /* CONTAINER */
+
+    .container,
+
+    .nav-container {
+
+        width: 88%;
+
+    }
+
+
+    /* NAVBAR */
+
+    .logo img {
+
+        width: 165px;
+
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        min-height: 650px;
+
+        padding-top: 120px;
+
+    }
+
+
+    .hero-badge {
+
+        padding: 8px 18px;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 2.6rem;
+
+        line-height: 1.08;
+
+    }
+
+
+    .hero p {
+
+        margin-top: 22px;
+
+        font-size: 14px;
+
+    }
+
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 12px;
+
+    }
+
+
+    .btn {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+
+    /* SECTION TITLE */
+
+    .section-title h2 {
+
+        font-size: 2rem;
+
+        line-height: 1.2;
+
+    }
+
+
+    .section-title p {
+
+        font-size: 14px;
+
+    }
+
+
+    /* CATEGORÍAS */
+
+    .talent-category {
+
+        min-height: 420px;
+
+    }
+
+
+    .category-content {
+
+        left: 25px;
+
+        right: 25px;
+
+        bottom: 28px;
+
+    }
+
+
+    .category-content h3 {
+
+        font-size: 11px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .category-content h2 {
+
+        font-size: 2rem;
+
+    }
+
+
+    .category-content p {
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* WHY */
+
+    .why-box {
+
+        padding: 26px;
+
+    }
+
+
+    .why-box h3 {
+
+        font-size: 20px;
+
+    }
+
+
+    .why-box p {
+
+        font-size: 14px;
+
+    }
+
+
+    /* CTA */
+
+    .cta-section h2 {
+
+        font-size: 2rem;
+
+        line-height: 1.2;
+
+    }
+
+
+    .cta-section p {
+
+        font-size: 14px;
+
+    }
+
+
+}
+
+
+/*==================================================
+MÓVILES MUY PEQUEÑOS
+==================================================*/
+
+@media (max-width: 360px) {
+
+
+    .logo img {
+
+        width: 145px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 2.25rem;
+
+    }
+
+
+    .talent-category {
+
+        min-height: 390px;
+
+    }
+
+
+}
+/*==================================================
+TARJETAS RESPONSIVE
+==================================================*/
+
+@media (max-width: 1000px) {
+
+    .cards-grid {
+
+        grid-template-columns:
+
+            repeat(
+
+                2,
+
+                1fr
+
+            );
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .talents-page-header {
+
+        padding: 140px 0 60px;
+
+    }
+
+
+    .talents-list-section {
+
+        padding: 60px 0 80px;
+
+    }
+
+
+    .cards-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .card-image {
+
+        height: 420px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .card-image {
+
+        height: 380px;
+
+    }
+
+
+    .card-content {
+
+        padding: 22px;
+
+    }
+
+
+    .card-buttons {
+
+        flex-direction: column;
+
+    }
+
+}

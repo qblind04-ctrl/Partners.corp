@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Maestras de Ceremonia | Partners Corp
+    </title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS PRINCIPAL -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <!-- CSS RESPONSIVE -->
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         NAVBAR
+    =============================== -->
+
+
+    <header class="navbar">
+
+
+        <div class="nav-container">
+
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="assets/logo.png"
+                    alt="Partners Corp"
+                >
+
+            </a>
+
+
+            <nav>
+
+
+                <ul class="nav-links">
+
+
+                    <li>
+
+                        <a href="index.html">
+
+                            Inicio
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="mujeres.html"
+                            class="active"
+                        >
+
+                            Mujeres
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="hombres.html">
+
+                            Hombres
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="promotores.html">
+
+                            Promotores
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+            >
+
+                ☰
+
+            </button>
+
+
+        </div>
+
+
+    </header>
+
+
+    <!-- ==============================
+         HEADER DE LA PÁGINA
+    =============================== -->
+
+
+    <main>
+
+
+        <section class="talents-page-header">
+
+
+            <div class="container">
+
+
+                <span>
+
+                    PARTNERS CORP
+
+                </span>
+
+
+                <h1>
+
+                    Maestras de Ceremonia
+
+                </h1>
+
+
+                <p>
+
+                    Profesionales preparadas para hacer
+                    de tu evento una experiencia inolvidable.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ==============================
+             TALENTOS
+        =============================== -->
+
+
+        <section class="talents-list-section">
+
+
+            <div class="container">
+
+
+                <div
+                    id="talentsGrid"
+                    class="cards-grid"
+                >
+
+
+                    <!-- LAS TARJETAS
+                         SE CARGARÁN AQUÍ
+                         DESDE SUPABASE -->
+
+
+                    <div
+                        id="loading"
+                        class="loading"
+                    >
+
+                        Cargando talentos...
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+
+    <footer>
+
+
+        <div class="container">
+
+
+            <p>
+
+                © 2026 Partners Corp.
+                Todos los derechos reservados.
+
+            </p>
+
+
+        </div>
+
+
+    </footer>
+    
+    <!-- ==============================
+     MODAL DE DETALLES
+============================== -->
+
+<div
+    id="talentModal"
+    class="talent-modal"
+>
+
+    <div class="talent-modal-content">
+
+
+        <button
+            id="closeModal"
+            class="close-modal"
+        >
+
+            ×
+
+        </button>
+
+
+        <div
+            id="modalContent"
+        >
+
+        </div>
+
+
+    </div>
+
+</div>
+
+    <!-- ==============================
+         SUPABASE
+    =============================== -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script src="js/supabase.js"></script>
+
+
+    <script src="js/mujeres.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Administración | Partners Corp
+    </title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+</head>
+
+
+<body class="admin-page">
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+
+    <header class="navbar">
+
+
+        <div class="nav-container">
+
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <img
+                    src="assets/logo.png"
+                    alt="Partners Corp"
+                >
+
+            </a>
+
+
+            <div class="admin-navbar-right">
+
+    <h2>
+
+        Panel de Administración
+
+    </h2>
+
+    <button
+        id="logoutBtn"
+        class="btn btn-outline"
+        type="button"
+    >
+
+        Cerrar sesión
+
+    </button>
+
+</div>
+
+
+        </div>
+
+
+    </header>
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+
+
+    <main class="admin-container">
+
+
+        <!-- =========================================
+             FORMULARIO
+        ========================================== -->
+
+
+        <section class="admin-form-section">
+
+
+            <div class="admin-section-header">
+
+
+                <div>
+
+
+                    <span>
+
+                        PARTNERS CORP
+
+                    </span>
+
+
+                    <h1 id="formTitle">
+
+                        Añadir talento
+
+                    </h1>
+
+
+                </div>
+
+
+                <button
+
+                    id="cancelEdit"
+
+                    class="btn btn-outline"
+
+                    style="display: none;"
+
+                    type="button"
+
+                >
+
+                    Cancelar edición
+
+                </button>
+
+
+            </div>
+
+
+            <!-- =========================================
+                 FORMULARIO
+            ========================================== -->
+
+
+            <form
+
+                id="talentForm"
+
+                class="admin-form"
+
+            >
+
+
+                <!-- NOMBRE -->
+
+
+                <div class="form-group">
+
+
+                    <label for="nombre">
+
+                        Nombre completo
+
+                    </label>
+
+
+                    <input
+
+                        type="text"
+
+                        id="nombre"
+
+                        required
+
+                    >
+
+
+                </div>
+
+
+                <!-- PRECIO Y CATEGORÍA -->
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+
+                        <label for="precio">
+
+                            Precio
+
+                        </label>
+
+
+                        <input
+
+                            type="number"
+
+                            id="precio"
+
+                            min="0"
+
+                            required
+
+                        >
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+
+                        <label for="categoria">
+
+                            Categoría
+
+                        </label>
+
+
+                        <select
+
+                            id="categoria"
+
+                            required
+
+                        >
+
+
+                            <option value="">
+
+                                Seleccionar categoría
+
+                            </option>
+
+
+                            <option value="mujeres">
+
+                                Mujeres
+
+                            </option>
+
+
+                            <option value="hombres">
+
+                                Hombres
+
+                            </option>
+
+
+                            <option value="promotores">
+
+                                Promotores
+
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ESPECIALIZACIONES -->
+
+
+                <div class="form-group">
+
+
+                    <label for="especializaciones">
+
+                        Especializaciones
+
+                    </label>
+
+
+                    <input
+
+                        type="text"
+
+                        id="especializaciones"
+
+                        placeholder="Presentador, Animador, Maestro de ceremonia"
+
+                        required
+
+                    >
+
+
+                    <small>
+
+                        Separa cada especialización con una coma.
+
+                    </small>
+
+
+                </div>
+
+
+                <!-- CIUDAD Y COBERTURA -->
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+
+                        <label for="ciudad">
+
+                            Ciudad
+
+                        </label>
+
+
+                        <input
+
+                            type="text"
+
+                            id="ciudad"
+
+                            placeholder="Cochabamba"
+
+                            required
+
+                        >
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+
+                        <label for="cobertura">
+
+                            Cobertura
+
+                        </label>
+
+
+                        <select
+
+                            id="cobertura"
+
+                            required
+
+                        >
+
+
+                            <option value="">
+
+                                Seleccionar cobertura
+
+                            </option>
+
+
+                            <option value="Local">
+
+                                Solo su ciudad
+
+                            </option>
+
+
+                            <option value="Nacional">
+
+                                Nacional
+
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     EDITOR DE IMAGEN
+                ========================================== -->
+
+
+                <div class="form-group">
+
+
+                    <label for="imagen">
+
+                        Foto del talento
+
+                    </label>
+
+
+                    <input
+
+                        type="file"
+
+                        id="imagen"
+
+                        accept="image/*"
+
+                    >
+
+
+                    <!-- =====================================
+                         ÁREA DE RECORTE
+                    ====================================== -->
+
+
+                    <div
+
+                        id="imageEditor"
+
+                        class="image-editor"
+
+                    >
+
+
+                        <canvas
+
+                            id="imageCanvas"
+
+                        ></canvas>
+
+
+                        <!-- RECUADRO DE RECORTE -->
+
+
+                        <div
+
+                            id="cropOverlay"
+
+                            class="crop-overlay"
+
+                        >
+
+
+                            <div
+
+                                class="crop-corner top-left"
+
+                            ></div>
+
+
+                            <div
+
+                                class="crop-corner top-right"
+
+                            ></div>
+
+
+                            <div
+
+                                class="crop-corner bottom-left"
+
+                            ></div>
+
+
+                            <div
+
+                                class="crop-corner bottom-right"
+
+                            ></div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <p
+
+                        class="image-help"
+
+                    >
+
+                        Arrastra la imagen para acomodarla dentro del recuadro.
+
+                    </p>
+
+
+                    <small>
+
+                        La imagen se recortará automáticamente al guardar.
+
+                    </small>
+
+
+                    <!-- PREVISUALIZACIÓN -->
+
+
+                    <div
+
+                        id="imagePreview"
+
+                        class="image-preview"
+
+                    ></div>
+
+
+                </div>
+
+
+                <!-- TALENTO PREMIUM -->
+
+
+                <label
+
+                    class="premium-checkbox"
+
+                >
+
+
+                    <input
+
+                        type="checkbox"
+
+                        id="premium"
+
+                    >
+
+
+                    <span>
+
+                        Talento premium
+
+                    </span>
+
+
+                </label>
+
+
+                <!-- GUARDAR -->
+
+
+                <button
+
+                    type="submit"
+
+                    class="btn btn-primary admin-submit"
+
+                >
+
+                    Guardar talento
+
+                </button>
+
+
+            </form>
+
+
+            <p
+
+                id="formMessage"
+
+                class="form-message"
+
+            ></p>
+
+
+        </section>
+
+
+        <!-- =========================================
+             TALENTOS REGISTRADOS
+        ========================================== -->
+
+
+        <section
+
+            class="admin-talents-section"
+
+        >
+
+
+            <div
+
+                class="admin-section-header"
+
+            >
+
+
+                <div>
+
+
+                    <span>
+
+                        BASE DE DATOS
+
+                    </span>
+
+
+                    <h2>
+
+                        Talentos registrados
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div
+
+                id="adminTalentsList"
+
+                class="admin-talents-list"
+
+            >
+
+
+                <p
+
+                    id="adminLoading"
+
+                >
+
+                    Cargando talentos...
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         SCRIPTS
+    ========================================== -->
+
+
+    <script
+
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+
+    ></script>
+
+
+    <script
+
+        src="js/supabase.js"
+
+    ></script>
+
+
+    <script
+
+        src="js/admin.js"
+
+    ></script>
+
+    <div id="successMessage" class="success-message"></div>
+
+
+</body>
+
+</html>
