@@ -1,696 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <title>Panel Administrativo | Partners Corp</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Administración | Partners Corp
-    </title>
-
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-        crossorigin
-    >
-
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-
-    <link
-        rel="stylesheet"
-        href="css/responsive.css"
-    >
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/round-gold.css">
+  <link rel="stylesheet" href="css/admin-sections.css">
 </head>
+<body class="admin-v2 admin-separated">
+  <aside class="admin-sidebar">
+    <a href="index.html" class="admin-logo"><img src="assets/logo.svg" alt="Partners Corp"></a>
+    <div class="admin-nav-label">Administración</div>
+    <nav>
+      <button class="side-link active" type="button" data-view-target="dashboard"><span>◇</span>Resumen</button>
+      <button class="side-link" type="button" data-view-target="create"><span>＋</span>Añadir talento</button>
+      <button class="side-link" type="button" data-view-target="talents"><span>▦</span>Talentos</button>
+      <a class="side-link" href="talentos.html" target="_blank"><span>↗</span>Ver sitio</a>
+    </nav>
+    <div class="side-bottom">
+      <div class="admin-user"><span class="avatar-dot">PC</span><div><strong>Partners Corp</strong><small id="sessionEmail">Administrador</small></div></div>
+      <button class="logout-link" id="logoutBtn" type="button">Cerrar sesión <span>→</span></button>
+    </div>
+  </aside>
 
+  <main class="admin-content admin-shell">
+    <!-- RESUMEN -->
+    <section class="admin-view active" data-view-panel="dashboard">
+      <header class="admin-topbar separated-topbar">
+        <div><span class="kicker">Panel de control</span><h1>Gestión de talentos</h1></div>
+        <a class="button ghost admin-site-button" href="talentos.html" target="_blank">Ver sitio ↗</a>
+      </header>
 
-<body class="admin-page">
+      <div class="view-intro">
+        <div><span class="kicker">Resumen</span><h2>Estado de la plataforma</h2></div>
+        <p>Los cambios se sincronizan con la base de datos de Partners Corp.</p>
+      </div>
 
+      <section class="stat-grid stat-grid-four">
+        <article><small>Total talentos</small><strong id="statTotal">—</strong><span>Perfiles registrados</span></article>
+        <article><small>Premium</small><strong id="statPremium">—</strong><span>Perfiles destacados</span></article>
+        <article><small>Maestros/as</small><strong id="statHosts">—</strong><span>Hombres + mujeres</span></article>
+        <article><small>Promotores</small><strong id="statPromoters">—</strong><span>Perfiles registrados</span></article>
+      </section>
 
-    <!-- =========================================
-         NAVBAR
-    ========================================== -->
-
-
-    <header class="navbar">
-
-
-        <div class="nav-container">
-
-
-            <a
-                href="index.html"
-                class="logo"
-            >
-
-                <img
-                    src="assets/logo.png"
-                    alt="Partners Corp"
-                >
-
-            </a>
-
-
-            <div class="admin-navbar-right">
-
-    <h2>
-
-        Panel de Administración
-
-    </h2>
-
-    <button
-        id="logoutBtn"
-        class="btn btn-outline"
-        type="button"
-    >
-
-        Cerrar sesión
-
-    </button>
-
-</div>
-
-
+      <section class="dashboard-actions-panel">
+        <div class="dashboard-actions-copy">
+          <span class="kicker">Acciones rápidas</span>
+          <h2>¿Qué quieres hacer?</h2>
+          <p>Cada módulo se abre por separado para que el panel se mantenga limpio y no tengas que recorrer toda la página.</p>
         </div>
+        <div class="dashboard-action-grid">
+          <button type="button" class="dashboard-action-card" data-jump="create"><span class="action-icon">＋</span><strong>Añadir talento</strong><small>Crear un perfil nuevo</small><i>→</i></button>
+          <button type="button" class="dashboard-action-card" data-jump="talents"><span class="action-icon">▦</span><strong>Gestionar talentos</strong><small>Editar o eliminar perfiles</small><i>→</i></button>
+        </div>
+      </section>
+    </section>
 
+    <!-- AÑADIR / EDITAR -->
+    <section class="admin-view" data-view-panel="create" hidden>
+      <header class="admin-topbar separated-topbar">
+        <div><span class="kicker" id="formKicker">Editor de perfil</span><h1 id="formTitle">Añadir talento</h1></div>
+        <button class="button ghost admin-site-button" type="button" id="cancelTop">Cancelar edición</button>
+      </header>
 
-    </header>
+      <section class="profile-editor-panel">
+        <form id="talentForm" class="embedded-form">
+          <input type="hidden" id="talentId">
+          <div class="editor-heading">
+            <div><span class="kicker">Información pública</span><h2>Datos del talento</h2><p>Completa la información que aparecerá en su tarjeta y perfil.</p></div>
+            <div class="editor-step">01</div>
+          </div>
 
-
-    <!-- =========================================
-         CONTENIDO PRINCIPAL
-    ========================================== -->
-
-
-    <main class="admin-container">
-
-
-        <!-- =========================================
-             FORMULARIO
-        ========================================== -->
-
-
-        <section class="admin-form-section">
-
-
-            <div class="admin-section-header">
-
-
-                <div>
-
-
-                    <span>
-
-                        PARTNERS CORP
-
-                    </span>
-
-
-                    <h1 id="formTitle">
-
-                        Añadir talento
-
-                    </h1>
-
-
-                </div>
-
-
-                <button
-
-                    id="cancelEdit"
-
-                    class="btn btn-outline"
-
-                    style="display: none;"
-
-                    type="button"
-
-                >
-
-                    Cancelar edición
-
-                </button>
-
-
+          <div class="form-columns embedded-columns">
+            <div class="form-main">
+              <div class="form-section-title"><span>01</span><div><strong>Información principal</strong><small>Datos visibles en la tarjeta y el perfil.</small></div></div>
+              <div class="field"><label for="nombre">Nombre completo</label><input id="nombre" required placeholder="Nombre del talento"></div>
+              <div class="field-row"><div class="field"><label for="precio">Precio (Bs)</label><input id="precio" type="number" min="0" required placeholder="500"></div><div class="field"><label for="categoria">Categoría</label><select id="categoria" required><option value="">Seleccionar categoría</option><option value="hombres">Maestro de ceremonia</option><option value="mujeres">Maestra de ceremonia</option><option value="promotores">Promotor/a</option></select></div></div>
+              <div class="field-row"><div class="field"><label for="cobertura">Cobertura</label><select id="cobertura" required><option value="">Seleccionar cobertura</option><option value="Local">Local</option><option value="Nacional">Nacional</option></select></div><div class="field"><label for="ciudad">Ciudad</label><input id="ciudad" required placeholder="Cochabamba"></div></div>
+              <div class="field"><label for="especializaciones">Especializaciones</label><input id="especializaciones" required placeholder="Presentación, Corporativo, Bodas"><small>Sepáralas con comas. Se mostrarán como píldoras doradas.</small></div>
+              <label class="switch-field"><input type="checkbox" id="premium"><span class="switch-ui"></span><div><strong>Talento Premium</strong><small>Se muestra primero y recibe una insignia dorada.</small></div></label>
             </div>
 
-
-            <!-- =========================================
-                 FORMULARIO
-            ========================================== -->
-
-
-            <form
-
-                id="talentForm"
-
-                class="admin-form"
-
-            >
-
-
-                <!-- NOMBRE -->
-
-
-                <div class="form-group">
-
-
-                    <label for="nombre">
-
-                        Nombre completo
-
-                    </label>
-
-
-                    <input
-
-                        type="text"
-
-                        id="nombre"
-
-                        required
-
-                    >
-
-
-                </div>
-
-
-                <!-- PRECIO Y CATEGORÍA -->
-
-
-                <div class="form-row">
-
-
-                    <div class="form-group">
-
-
-                        <label for="precio">
-
-                            Precio
-
-                        </label>
-
-
-                        <input
-
-                            type="number"
-
-                            id="precio"
-
-                            min="0"
-
-                            required
-
-                        >
-
-
-                    </div>
-
-
-                    <div class="form-group">
-
-
-                        <label for="categoria">
-
-                            Categoría
-
-                        </label>
-
-
-                        <select
-
-                            id="categoria"
-
-                            required
-
-                        >
-
-
-                            <option value="">
-
-                                Seleccionar categoría
-
-                            </option>
-
-
-                            <option value="mujeres">
-
-                                Mujeres
-
-                            </option>
-
-
-                            <option value="hombres">
-
-                                Hombres
-
-                            </option>
-
-
-                            <option value="promotores">
-
-                                Promotores
-
-                            </option>
-
-
-                        </select>
-
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- ESPECIALIZACIONES -->
-
-
-                <div class="form-group">
-
-
-                    <label for="especializaciones">
-
-                        Especializaciones
-
-                    </label>
-
-
-                    <input
-
-                        type="text"
-
-                        id="especializaciones"
-
-                        placeholder="Presentador, Animador, Maestro de ceremonia"
-
-                        required
-
-                    >
-
-
-                    <small>
-
-                        Separa cada especialización con una coma.
-
-                    </small>
-
-
-                </div>
-
-
-                <!-- CIUDAD Y COBERTURA -->
-
-
-                <div class="form-row">
-
-
-                    <div class="form-group">
-
-
-                        <label for="ciudad">
-
-                            Ciudad
-
-                        </label>
-
-
-                        <input
-
-                            type="text"
-
-                            id="ciudad"
-
-                            placeholder="Cochabamba"
-
-                            required
-
-                        >
-
-
-                    </div>
-
-
-                    <div class="form-group">
-
-
-                        <label for="cobertura">
-
-                            Cobertura
-
-                        </label>
-
-
-                        <select
-
-                            id="cobertura"
-
-                            required
-
-                        >
-
-
-                            <option value="">
-
-                                Seleccionar cobertura
-
-                            </option>
-
-
-                            <option value="Local">
-
-                                Solo su ciudad
-
-                            </option>
-
-
-                            <option value="Nacional">
-
-                                Nacional
-
-                            </option>
-
-
-                        </select>
-
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- =========================================
-                     EDITOR DE IMAGEN
-                ========================================== -->
-
-
-                <div class="form-group">
-
-
-                    <label for="imagen">
-
-                        Foto del talento
-
-                    </label>
-
-
-                    <input
-
-                        type="file"
-
-                        id="imagen"
-
-                        accept="image/*"
-
-                    >
-
-
-                    <!-- =====================================
-                         ÁREA DE RECORTE
-                    ====================================== -->
-
-
-                    <div
-
-                        id="imageEditor"
-
-                        class="image-editor"
-
-                    >
-
-
-                        <canvas
-
-                            id="imageCanvas"
-
-                        ></canvas>
-
-
-                        <!-- RECUADRO DE RECORTE -->
-
-
-                        <div
-
-                            id="cropOverlay"
-
-                            class="crop-overlay"
-
-                        >
-
-
-                            <div
-
-                                class="crop-corner top-left"
-
-                            ></div>
-
-
-                            <div
-
-                                class="crop-corner top-right"
-
-                            ></div>
-
-
-                            <div
-
-                                class="crop-corner bottom-left"
-
-                            ></div>
-
-
-                            <div
-
-                                class="crop-corner bottom-right"
-
-                            ></div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                    <p
-
-                        class="image-help"
-
-                    >
-
-                        Arrastra la imagen para acomodarla dentro del recuadro.
-
-                    </p>
-
-
-                    <small>
-
-                        La imagen se recortará automáticamente al guardar.
-
-                    </small>
-
-
-                    <!-- PREVISUALIZACIÓN -->
-
-
-                    <div
-
-                        id="imagePreview"
-
-                        class="image-preview"
-
-                    ></div>
-
-
-                </div>
-
-
-                <!-- TALENTO PREMIUM -->
-
-
-                <label
-
-                    class="premium-checkbox"
-
-                >
-
-
-                    <input
-
-                        type="checkbox"
-
-                        id="premium"
-
-                    >
-
-
-                    <span>
-
-                        Talento premium
-
-                    </span>
-
-
-                </label>
-
-
-                <!-- GUARDAR -->
-
-
-                <button
-
-                    type="submit"
-
-                    class="btn btn-primary admin-submit"
-
-                >
-
-                    Guardar talento
-
-                </button>
-
-
-            </form>
-
-
-            <p
-
-                id="formMessage"
-
-                class="form-message"
-
-            ></p>
-
-
-        </section>
-
-
-        <!-- =========================================
-             TALENTOS REGISTRADOS
-        ========================================== -->
-
-
-        <section
-
-            class="admin-talents-section"
-
-        >
-
-
-            <div
-
-                class="admin-section-header"
-
-            >
-
-
-                <div>
-
-
-                    <span>
-
-                        BASE DE DATOS
-
-                    </span>
-
-
-                    <h2>
-
-                        Talentos registrados
-
-                    </h2>
-
-
-                </div>
-
-
+            <div class="form-image">
+              <div class="form-section-title"><span>02</span><div><strong>Fotografía</strong><small>Autoencuadre automático en formato vertical 4:5.</small></div></div>
+              <label class="upload-card" for="imagen"><span>＋</span><div><strong>Seleccionar fotografía</strong><small>JPG, PNG o WEBP · máximo 12 MB</small></div></label>
+              <input id="imagen" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+              <div class="crop-stage" id="cropStage"><canvas id="cropCanvas" width="800" height="1000"></canvas><div class="crop-placeholder" id="cropPlaceholder"><span>＋</span><strong>Vista previa 4:5</strong><small>La imagen se centrará automáticamente</small></div><div class="crop-guides" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+              <div class="crop-controls"><button type="button" id="zoomOut">−</button><input id="zoomRange" type="range" min="1" max="2.4" value="1" step="0.01"><button type="button" id="zoomIn">＋</button><button type="button" class="auto-frame" id="autoFrame">Autoencuadrar</button></div>
+              <p class="crop-help">Puedes arrastrar la imagen para ajustar el encuadre antes de guardarla.</p>
+              <div class="existing-image" id="existingImage" hidden><img alt="Foto actual"><span>Foto actual · selecciona otra para reemplazarla</span></div>
             </div>
+          </div>
 
+          <footer class="embedded-form-footer"><p id="formStatus" class="form-status" aria-live="polite"></p><div><button type="button" class="button ghost dark-ghost" id="cancelForm">Cancelar</button><button type="submit" class="button gold" id="saveTalentBtn">Guardar talento</button></div></footer>
+        </form>
+      </section>
+    </section>
 
-            <div
+    <!-- TALENTOS -->
+    <section class="admin-view" data-view-panel="talents" hidden>
+      <header class="admin-topbar separated-topbar">
+        <div><span class="kicker">Administración</span><h1>Talentos</h1></div>
+        <button class="button gold" type="button" id="newTalentBtn">＋ Añadir talento</button>
+      </header>
 
-                id="adminTalentsList"
+      <section class="admin-list-panel separated-list-panel">
+        <div class="admin-list-head">
+          <div><span class="kicker">Directorio</span><h2>Perfiles registrados</h2><p>Edita, filtra o elimina los talentos publicados en la plataforma.</p></div>
+          <div class="admin-tools"><label class="admin-search"><span>⌕</span><input id="adminSearch" type="search" placeholder="Buscar talento"></label><select id="adminCategory"><option value="">Todas las categorías</option><option value="hombres">Maestros</option><option value="mujeres">Maestras</option><option value="promotores">Promotores</option></select></div>
+        </div>
+        <div class="admin-roster" id="adminRoster"><div class="admin-loading">Cargando talentos…</div></div>
+      </section>
+    </section>
+  </main>
 
-                class="admin-talents-list"
-
-            >
-
-
-                <p
-
-                    id="adminLoading"
-
-                >
-
-                    Cargando talentos...
-
-                </p>
-
-
-            </div>
-
-
-        </section>
-
-
-    </main>
-
-
-    <!-- =========================================
-         SCRIPTS
-    ========================================== -->
-
-
-    <script
-
-        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-
-    ></script>
-
-
-    <script
-
-        src="js/supabase.js"
-
-    ></script>
-
-
-    <script
-
-        src="js/admin.js"
-
-    ></script>
-
-    <div id="successMessage" class="success-message"></div>
-
-
+  <div class="toast" id="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/admin.js"></script>
 </body>
-
 </html>

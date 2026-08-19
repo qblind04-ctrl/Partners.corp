@@ -1,146 +1,26 @@
-/*==================================================
-PARTNERS CORP
-MAIN.JS
-==================================================*/
-
-
-const menuButton =
-    document.getElementById("menuButton");
-
-
-const sidebar =
-    document.getElementById("sidebar");
-
-
-const sidebarClose =
-    document.getElementById("sidebarClose");
-
-
-const sidebarOverlay =
-    document.getElementById("sidebarOverlay");
-
-
-/*==================================================
-ABRIR MENÚ
-==================================================*/
-
-function openSidebar() {
-
-    sidebar.classList.add("active");
-
-    sidebarOverlay.classList.add("active");
-
-}
-
-
-/*==================================================
-CERRAR MENÚ
-==================================================*/
-
-function closeSidebar() {
-
-    sidebar.classList.remove("active");
-
-    sidebarOverlay.classList.remove("active");
-
-}
-
-
-/*==================================================
-EVENTOS
-==================================================*/
-
-if (menuButton) {
-
-    menuButton.addEventListener(
-        "click",
-        openSidebar
-    );
-
-}
-
-
-if (sidebarClose) {
-
-    sidebarClose.addEventListener(
-        "click",
-        closeSidebar
-    );
-
-}
-
-
-if (sidebarOverlay) {
-
-    sidebarOverlay.addEventListener(
-        "click",
-        closeSidebar
-    );
-
-}
-/*==================================================
-PARTNERS CORP
-MAIN.JS
-==================================================*/
-
-
-/*==================================================
-ELEMENTOS
-==================================================*/
-
-const menuToggle =
-    document.querySelector(".menu-toggle");
-
-
-const navLinks =
-    document.querySelector(".nav-links");
-
-
-/*==================================================
-ABRIR / CERRAR MENÚ MÓVIL
-==================================================*/
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.querySelector('.nav-links');
 
 if (menuToggle && navLinks) {
+  const closeMenu = () => {
+    navLinks.classList.remove('active');
+    menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
 
-    menuToggle.addEventListener(
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
 
-        "click",
-
-        () => {
-
-            navLinks.classList.toggle("active");
-
-        }
-
-    );
-
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('click', event => {
+    if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+  });
 }
 
-
-/*==================================================
-CERRAR MENÚ AL HACER CLICK EN UN ENLACE
-==================================================*/
-
-const links =
-    document.querySelectorAll(".nav-links a");
-
-
-links.forEach(
-
-    link => {
-
-        link.addEventListener(
-
-            "click",
-
-            () => {
-
-                navLinks.classList.remove("active");
-
-            }
-
-        );
-
-    }
-
-);
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 24);
+}, { passive: true });

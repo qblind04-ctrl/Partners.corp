@@ -1,600 +1,139 @@
-/*==================================================
-PARTNERS CORP
-MAIN PAGE
-RESPONSIVE.CSS
-==================================================*/
-
-
-/*==================================================
-TABLETS
-==================================================*/
-
-@media (max-width: 1000px) {
-
-
-    /* NAVBAR */
-
-    .logo img {
-
-        width: 230px;
-
-    }
-
-
-    .nav-links {
-
-        gap: 28px;
-
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-        min-height: 700px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: clamp(
-
-            3rem,
-
-            7vw,
-
-            5rem
-
-        );
-
-    }
-
-
-    /* CATEGORÍAS */
-
-    .talent-category {
-
-        min-height: 430px;
-
-    }
-
-
-    .category-content {
-
-        left: 32px;
-
-        right: 32px;
-
-        bottom: 32px;
-
-    }
-
-
-    /* WHY */
-
-    .why-grid {
-
-        gap: 18px;
-
-    }
-
-
+@media (max-width: 1100px) {
+  .nav-links { gap: 20px; }
+  .logo { width: 190px; }
+  .why-layout { gap: 60px; }
+  .cards-grid { grid-template-columns: repeat(2,1fr); }
+  .admin-shell { grid-template-columns: 220px minmax(0,1fr); }
+  .admin-sidebar { width: 220px; }
+  .admin-brand img { width: 170px; }
+  .admin-main { padding-left: 24px; padding-right: 24px; }
+  .form-layout { grid-template-columns: 1fr 330px; gap: 24px; }
+  .admin-talents-list { grid-template-columns: 1fr; }
 }
 
-
-/*==================================================
-TABLETS PEQUEÑAS
-==================================================*/
-
-@media (max-width: 768px) {
-
-
-    /* NAVBAR */
-
-    .navbar {
-
-        height: 75px;
-
-    }
-
-
-    .nav-container {
-
-        width: 90%;
-
-    }
-
-
-    .logo img {
-
-        width: 190px;
-
-    }
-
-
-    .nav-links {
-
-        display: none;
-
-        position: absolute;
-
-        top: 75px;
-
-        left: 0;
-
-        width: 100%;
-
-        padding: 25px 0;
-
-        flex-direction: column;
-
-        gap: 22px;
-
-        background: rgba(
-
-            5,
-
-            5,
-
-            5,
-
-            .98
-
-        );
-
-        border-bottom: 1px solid var(--border);
-
-    }
-
-
-    .nav-links.active {
-
-        display: flex;
-
-    }
-
-
-    .menu-toggle {
-
-        display: block;
-
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-        min-height: 680px;
-
-        height: auto;
-
-        padding: 130px 0 80px;
-
-    }
-
-
-    .hero-content {
-
-        padding-top: 0;
-
-    }
-
-
-    .hero-badge {
-
-        margin-bottom: 22px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: clamp(
-
-            2.5rem,
-
-            8vw,
-
-            4.5rem
-
-        );
-
-        letter-spacing: -1.5px;
-
-    }
-
-
-    .hero p {
-
-        max-width: 600px;
-
-        font-size: 15px;
-
-        line-height: 1.7;
-
-    }
-
-
-    .hero-buttons {
-
-        flex-wrap: wrap;
-
-    }
-
-
-    /* TALENTOS */
-
-    .talents-section {
-
-        padding: 80px 0;
-
-    }
-
-
-    .section-title {
-
-        margin-bottom: 40px;
-
-    }
-
-
-    .section-title h2 {
-
-        font-size: 2.4rem;
-
-    }
-
-
-    .talent-categories {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .talent-category.full {
-
-        grid-column: span 1;
-
-    }
-
-
-    .talent-category {
-
-        min-height: 430px;
-
-    }
-
-
-    /* WHY */
-
-    .why-section {
-
-        padding: 70px 0;
-
-    }
-
-
-    .why-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    /* CTA */
-
-    .cta-section {
-
-        padding: 80px 0;
-
-    }
-
-
+@media (max-width: 900px) {
+  .container, .nav-container { width: min(100% - 32px, 1180px); }
+  .navbar { height: 76px; }
+  .nav-container nav { order: 4; }
+  .nav-links { position: fixed; top: 76px; left: 16px; right: 16px; display: grid; gap: 0; padding: 10px; border: 1px solid rgba(217,185,111,.18); border-radius: 16px; background: rgba(12,12,12,.97); box-shadow: var(--shadow); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: .22s; }
+  .nav-links.active { opacity: 1; visibility: visible; transform: none; }
+  .nav-links a { display: block; padding: 13px 12px; border-radius: 10px; }
+  .nav-links a::after { display: none; }
+  .nav-links a:hover, .nav-links a.active { background: #171717; color: var(--gold-light); }
+  .nav-cta { display: none; }
+  .menu-toggle { display: flex; margin-left: auto; }
+  .menu-toggle.active span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+  .logo { width: 175px; }
+  .logo img { height: 48px; }
+
+  .hero { min-height: 760px; height: auto; padding: 120px 0 80px; background-position: 62% center; }
+  .hero-overlay { background: linear-gradient(90deg, rgba(5,5,5,.91), rgba(5,5,5,.65) 65%, rgba(5,5,5,.5)); }
+  .hero h1 { font-size: clamp(56px, 10vw, 82px); }
+  .hero-scroll { display: none; }
+  .split-heading { grid-template-columns: 1fr; gap: 22px; }
+  .split-heading p { justify-self: start; }
+  .talent-category { min-height: 500px; }
+  .why-layout { grid-template-columns: 1fr; gap: 55px; }
+  .why-intro { position: static; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-grid article { border-right: 0; border-bottom: 1px solid rgba(47,40,26,.12); min-height: 180px; }
+  .process-grid article:last-child { border-bottom: 0; }
+  .process-grid h3 { margin-top: 25px; }
+  .contact-card { align-items: flex-start; flex-direction: column; }
+  .talent-toolbar { top: 88px; grid-template-columns: 1fr 220px; }
+  .results-count { grid-column: 1 / -1; padding: 2px 4px 0; }
+  .modal-profile-grid { grid-template-columns: 1fr 1fr; }
+  .modal-profile-info { padding: 58px 30px 32px; }
+
+  .login-shell { grid-template-columns: 1fr; }
+  .login-brand-panel { min-height: 430px; padding: 40px 8vw; }
+  .login-brand-panel h1 { font-size: clamp(52px, 10vw, 72px); }
+  .login-form-panel { min-height: 560px; padding: 55px 30px; }
+
+  .admin-shell { display: block; }
+  .admin-sidebar { width: 270px; transform: translateX(-105%); transition: .25s ease; box-shadow: 25px 0 70px rgba(0,0,0,.35); }
+  .admin-sidebar.open { transform: none; }
+  .admin-main { padding: 0 20px 60px; }
+  .admin-topbar { height: 82px; gap: 14px; justify-content: flex-start; }
+  .admin-menu-btn { display: grid; place-items: center; flex: 0 0 auto; width: 42px; height: 42px; border-radius: 11px; border: 1px solid rgba(255,255,255,.08); background: #121212; color: var(--gold-light); }
+  .admin-site-link { margin-left: auto; }
+  .admin-overlay { display: block; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.65); backdrop-filter: blur(3px); opacity: 0; visibility: hidden; transition: .2s; }
+  .admin-overlay.active { opacity: 1; visibility: visible; }
+  .form-layout { grid-template-columns: 1fr; }
+  .image-editor { width: min(100%, 410px); }
 }
-
-
-/*==================================================
-MÓVILES
-==================================================*/
-
-@media (max-width: 500px) {
-
-
-    /* CONTAINER */
-
-    .container,
-
-    .nav-container {
-
-        width: 88%;
-
-    }
-
-
-    /* NAVBAR */
-
-    .logo img {
-
-        width: 165px;
-
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-        min-height: 650px;
-
-        padding-top: 120px;
-
-    }
-
-
-    .hero-badge {
-
-        padding: 8px 18px;
-
-        font-size: 10px;
-
-        letter-spacing: 2px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: 2.6rem;
-
-        line-height: 1.08;
-
-    }
-
-
-    .hero p {
-
-        margin-top: 22px;
-
-        font-size: 14px;
-
-    }
-
-
-    .hero-buttons {
-
-        flex-direction: column;
-
-        width: 100%;
-
-        gap: 12px;
-
-    }
-
-
-    .btn {
-
-        width: 100%;
-
-        min-width: 0;
-
-    }
-
-
-    /* SECTION TITLE */
-
-    .section-title h2 {
-
-        font-size: 2rem;
-
-        line-height: 1.2;
-
-    }
-
-
-    .section-title p {
-
-        font-size: 14px;
-
-    }
-
-
-    /* CATEGORÍAS */
-
-    .talent-category {
-
-        min-height: 420px;
-
-    }
-
-
-    .category-content {
-
-        left: 25px;
-
-        right: 25px;
-
-        bottom: 28px;
-
-    }
-
-
-    .category-content h3 {
-
-        font-size: 11px;
-
-        letter-spacing: 2px;
-
-    }
-
-
-    .category-content h2 {
-
-        font-size: 2rem;
-
-    }
-
-
-    .category-content p {
-
-        font-size: 14px;
-
-        line-height: 1.6;
-
-    }
-
-
-    /* WHY */
-
-    .why-box {
-
-        padding: 26px;
-
-    }
-
-
-    .why-box h3 {
-
-        font-size: 20px;
-
-    }
-
-
-    .why-box p {
-
-        font-size: 14px;
-
-    }
-
-
-    /* CTA */
-
-    .cta-section h2 {
-
-        font-size: 2rem;
-
-        line-height: 1.2;
-
-    }
-
-
-    .cta-section p {
-
-        font-size: 14px;
-
-    }
-
-
-}
-
-
-/*==================================================
-MÓVILES MUY PEQUEÑOS
-==================================================*/
-
-@media (max-width: 360px) {
-
-
-    .logo img {
-
-        width: 145px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: 2.25rem;
-
-    }
-
-
-    .talent-category {
-
-        min-height: 390px;
-
-    }
-
-
-}
-/*==================================================
-TARJETAS RESPONSIVE
-==================================================*/
-
-@media (max-width: 1000px) {
-
-    .cards-grid {
-
-        grid-template-columns:
-
-            repeat(
-
-                2,
-
-                1fr
-
-            );
-
-    }
-
-}
-
 
 @media (max-width: 650px) {
+  .container, .nav-container { width: calc(100% - 24px); }
+  .hero { min-height: 730px; padding-top: 105px; background-position: 68% center; }
+  .hero h1 { font-size: 54px; }
+  .hero-content > p { font-size: 13px; }
+  .hero-buttons { display: grid; grid-template-columns: 1fr; max-width: 340px; }
+  .hero-proof { grid-template-columns: 1fr; gap: 12px; max-width: 330px; }
+  .hero-proof div { padding: 0 0 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .talents-section, .why-section, .process-section { padding: 84px 0; }
+  .section-heading h2, .why-intro h2, .contact-card h2 { font-size: 44px; }
+  .talent-categories { grid-template-columns: 1fr; }
+  .talent-category.category-wide { grid-column: auto; min-height: 500px; }
+  .talent-category { min-height: 490px; border-radius: 20px; }
+  .category-content { inset: auto 24px 26px; }
+  .category-top { inset: 22px 22px auto; }
+  .why-item { grid-template-columns: 42px 1fr; gap: 14px; }
+  .contact-section { padding: 60px 0; }
+  .contact-card { padding: 32px 25px; border-radius: 20px; }
+  .contact-actions { width: 100%; justify-content: flex-start; }
+  .contact-card .btn { width: 100%; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
 
-    .talents-page-header {
+  .talents-page-header { padding: 135px 0 55px; }
+  .talents-page-header h1 { font-size: 56px; }
+  .talents-list-section { padding-top: 20px; }
+  .talent-toolbar { top: 82px; grid-template-columns: 1fr; padding: 9px; border-radius: 14px; }
+  .talent-toolbar select { width: 100%; }
+  .results-count { grid-column: auto; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .talent-card { max-width: 470px; width: 100%; margin: 0 auto; }
+  .talent-card h2 { font-size: 36px; }
+  .talent-modal { padding: 10px; }
+  .talent-modal-content { max-height: 95vh; border-radius: 20px; }
+  .modal-profile-grid { grid-template-columns: 1fr; }
+  .modal-profile-media { min-height: auto; aspect-ratio: 4/5; max-height: 56vh; }
+  .modal-profile-info { padding: 34px 22px 26px; }
+  .modal-profile-info h2 { font-size: 45px; }
 
-        padding: 140px 0 60px;
+  .login-brand-panel { min-height: 390px; padding: 30px 24px; }
+  .login-brand-panel h1 { font-size: 50px; }
+  .login-form-panel { min-height: 520px; padding: 45px 24px; }
+  .login-card h2 { font-size: 43px; }
 
-    }
-
-
-    .talents-list-section {
-
-        padding: 60px 0 80px;
-
-    }
-
-
-    .cards-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .card-image {
-
-        height: 420px;
-
-    }
-
+  .admin-main { padding: 0 12px 45px; }
+  .admin-topbar { height: 76px; margin-bottom: 18px; }
+  .admin-topbar h1 { font-size: 25px; }
+  .admin-site-link { display: none; }
+  .dashboard-heading, .admin-section-header { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .dashboard-heading h2, .admin-section-header h2 { font-size: 31px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid article { min-height: 120px; padding: 16px; }
+  .stats-grid strong { font-size: 38px; }
+  .admin-panel { padding: 18px; border-radius: 17px; }
+  .form-grid.two { grid-template-columns: 1fr; }
+  .form-layout { gap: 30px; }
+  .form-footer { align-items: stretch; flex-direction: column; }
+  .admin-submit { width: 100%; }
+  .manager-tools { width: 100%; flex-direction: column; align-items: stretch; }
+  .admin-search, .manager-tools select { min-width: 0; width: 100%; }
+  .admin-talent-card { grid-template-columns: 105px 1fr; }
+  .admin-card-image { min-height: 165px; }
+  .admin-card-content h3 { font-size: 23px; }
+  .success-message { right: 12px; left: 12px; bottom: 12px; max-width: none; }
 }
 
-
-@media (max-width: 500px) {
-
-    .card-image {
-
-        height: 380px;
-
-    }
-
-
-    .card-content {
-
-        padding: 22px;
-
-    }
-
-
-    .card-buttons {
-
-        flex-direction: column;
-
-    }
-
+@media (max-width: 390px) {
+  .hero h1 { font-size: 48px; }
+  .section-heading h2, .why-intro h2, .contact-card h2 { font-size: 40px; }
+  .talent-card-actions { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .admin-talent-card { grid-template-columns: 92px 1fr; }
 }
