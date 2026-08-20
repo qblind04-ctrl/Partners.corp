@@ -35,3 +35,8 @@ SEGURIDAD
 NO SE USA LOCALSTORAGE PARA TALENTOS
 ------------------------------------
 Los datos y la sesión administrativa funcionan con Supabase.
+
+
+BRANDING
+- Se restauró el logo original de Partners Corp (assets/logo-antiguo.png).
+- Se mantiene la estética ROUND GOLD, favicon, administrador por secciones y conexión al Supabase nuevo.

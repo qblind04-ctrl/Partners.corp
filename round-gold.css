@@ -1,0 +1,287 @@
+/* PARTNERS CORP · ROUND GOLD REFINEMENT */
+:root{
+  --gold:#d4af37;
+  --gold-2:#f2d67f;
+  --gold-3:#f7e6ad;
+  --gold-dark:#946613;
+  --round-lg:30px;
+  --round-md:22px;
+  --round-sm:16px;
+}
+
+/* ---------- Global softness ---------- */
+.button,.nav-cta,.light-button,.work-button{
+  border-radius:999px!important;
+}
+.button{padding-left:27px;padding-right:27px}
+.button.gold,.work-button{
+  background:linear-gradient(135deg,#f7df92 0%,#d4af37 47%,#ad7917 100%)!important;
+  border:1px solid rgba(255,238,181,.78)!important;
+  box-shadow:0 12px 30px rgba(212,175,55,.2),inset 0 1px 0 rgba(255,255,255,.42)!important;
+}
+.button.gold:hover,.work-button:hover{
+  background:linear-gradient(135deg,#fff0b6 0%,#e3bd49 48%,#bb841b 100%)!important;
+  box-shadow:0 16px 38px rgba(212,175,55,.3)!important;
+}
+.button.ghost,.dark-ghost{border-radius:999px!important}
+.nav-cta{padding:12px 21px!important}
+.menu-button{border-radius:50%;border:1px solid rgba(212,175,55,.3)!important;background:rgba(10,10,10,.35)!important}
+
+/* Home cards */
+.service-card{
+  border-radius:30px!important;
+  border:1px solid rgba(212,175,55,.34)!important;
+  box-shadow:0 26px 70px rgba(0,0,0,.28);
+}
+.service-card:after{border-radius:30px!important;inset:0!important}
+.service-copy span{
+  width:max-content;
+  min-width:190px;
+  max-width:100%;
+  border:1px solid rgba(242,214,127,.48)!important;
+  border-radius:999px;
+  padding:12px 17px!important;
+  background:rgba(212,175,55,.10);
+  color:var(--gold-2)!important;
+}
+.service-copy span b{margin-left:28px}
+.principle{border-radius:18px;padding-left:16px;padding-right:16px;transition:.25s}
+.principle:hover{background:rgba(148,102,19,.06)}
+.work-shell{
+  border-radius:30px!important;
+  border-color:rgba(212,175,55,.52)!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.38),0 0 0 1px rgba(212,175,55,.05)!important;
+}
+.work-shell:before{border-radius:30px 0 0 30px}
+
+/* ---------- Catalog controls ---------- */
+.search-box,.filter-row select{
+  border-radius:999px!important;
+  border-color:rgba(212,175,55,.20)!important;
+  background:#11100e!important;
+}
+.search-box:focus-within,.filter-row select:focus{border-color:rgba(242,214,127,.62)!important}
+.search-box kbd{border-radius:999px;border-color:rgba(212,175,55,.2)!important}
+
+/* ---------- Talent cards ---------- */
+.talent-grid-new{gap:28px!important}
+.talent-card-v2{
+  overflow:hidden;
+  border-radius:28px!important;
+  background:linear-gradient(180deg,#151410 0%,#101010 50%,#0f0f0f 100%)!important;
+  border:1px solid rgba(212,175,55,.34)!important;
+  box-shadow:0 20px 55px rgba(0,0,0,.24);
+}
+.talent-card-v2:hover{
+  border-color:rgba(247,223,146,.70)!important;
+  box-shadow:0 28px 70px rgba(0,0,0,.42),0 0 0 1px rgba(212,175,55,.08)!important;
+}
+.talent-media{border-radius:27px 27px 19px 19px!important}
+.premium-badge,.coverage-badge{
+  border-radius:999px!important;
+  backdrop-filter:blur(10px);
+}
+.premium-badge{
+  background:linear-gradient(135deg,#f9e5a1,#d4af37 58%,#a46f12)!important;
+  color:#0a0907!important;
+  border:1px solid rgba(255,242,196,.88)!important;
+  box-shadow:0 8px 24px rgba(212,175,55,.28)!important;
+}
+.coverage-badge{
+  border:1px solid rgba(242,214,127,.48)!important;
+  background:rgba(8,8,8,.68)!important;
+  color:#f3d77d!important;
+}
+.talent-info-v2{padding:22px 22px 24px!important}
+.talent-tags-v2,.profile-tags{display:flex!important;flex-wrap:wrap;gap:8px!important}
+.talent-tags-v2 span,.profile-tags span{
+  border-radius:999px!important;
+  border:1px solid rgba(242,214,127,.62)!important;
+  background:linear-gradient(135deg,rgba(242,214,127,.18),rgba(164,111,18,.09))!important;
+  color:#f5d982!important;
+  padding:7px 11px!important;
+  font-weight:700!important;
+  letter-spacing:.025em;
+}
+.talent-price-row{margin-top:22px!important;padding-top:18px!important;border-top:1px solid rgba(212,175,55,.20)!important}
+.circle-action{
+  width:46px!important;height:46px!important;border-radius:50%!important;
+  border:1px solid rgba(242,214,127,.62)!important;
+  background:rgba(212,175,55,.08)!important;
+  color:var(--gold-2)!important;
+}
+.circle-action:hover{background:var(--gold)!important;color:#090909!important;transform:rotate(6deg)}
+.profile-dialog{border-radius:30px!important;overflow:hidden!important;border-color:rgba(212,175,55,.38)!important}
+.profile-image{border-radius:28px 0 0 28px;overflow:hidden}
+.full-button{border-radius:999px!important}
+
+/* ---------- Login ---------- */
+.auth-card{border-radius:28px!important;border-color:rgba(212,175,55,.24)!important;box-shadow:0 30px 90px rgba(0,0,0,.32)}
+.auth-card input{border-radius:14px!important}
+.local-credentials{border-radius:14px!important}
+
+/* ---------- Admin: closer to the softer previous edition ---------- */
+.admin-v2{background:radial-gradient(circle at 82% 8%,rgba(212,175,55,.055),transparent 26%),#0b0b0b!important}
+.admin-sidebar{width:252px!important;padding:26px 20px!important}
+.admin-logo{width:184px!important;margin:4px 7px 43px!important}
+.side-link{
+  border-radius:13px!important;
+  min-height:46px!important;
+  height:auto!important;
+  border:1px solid transparent!important;
+  transition:.2s!important;
+}
+.side-link.active,.side-link:hover{
+  background:linear-gradient(135deg,rgba(212,175,55,.11),rgba(255,255,255,.02))!important;
+  border-color:rgba(212,175,55,.16)!important;
+}
+.avatar-dot{border-radius:12px!important;background:linear-gradient(135deg,#f1d37b,#aa7517)!important}
+.logout-link{border-radius:999px!important}
+.admin-content{margin-left:252px!important}
+.admin-topbar .button.gold{border-radius:999px!important}
+
+.stat-grid article{
+  border-radius:20px!important;
+  border-color:rgba(212,175,55,.16)!important;
+  background:linear-gradient(145deg,#151410,#101010)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.18);
+}
+.admin-list-panel{
+  border-radius:26px!important;
+  overflow:hidden!important;
+  border-color:rgba(212,175,55,.18)!important;
+  background:#10100f!important;
+  box-shadow:0 24px 60px rgba(0,0,0,.18);
+}
+.admin-list-head{padding:27px 28px!important}
+.admin-search,.admin-tools select{
+  border-radius:999px!important;
+  border-color:rgba(212,175,55,.18)!important;
+  background:#151410!important;
+}
+.admin-roster{
+  padding:18px!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px!important;
+}
+.admin-talent-card{
+  display:grid;
+  grid-template-columns:136px minmax(0,1fr);
+  min-height:188px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(212,175,55,.18);
+  background:linear-gradient(145deg,#171612,#121212);
+  transition:.25s;
+}
+.admin-talent-card:hover{border-color:rgba(212,175,55,.42);transform:translateY(-2px);box-shadow:0 18px 42px rgba(0,0,0,.25)}
+.admin-card-image{position:relative;min-height:188px;background:#0c0c0c;overflow:hidden}
+.admin-card-image img{width:100%;height:100%;object-fit:cover;display:block}
+.admin-card-content{padding:17px;display:flex;flex-direction:column;min-width:0}
+.admin-card-topline{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.admin-card-topline span{font-size:8px;text-transform:uppercase;letter-spacing:.09em;color:#8e887e}
+.admin-card-topline strong{font-size:9px;color:var(--gold-2)}
+.admin-card-content h3{font-family:var(--serif);font-size:27px;line-height:1;margin:10px 0 7px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-card-location{font-size:8px;color:#89837a}
+.admin-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.admin-card-tags span{
+  padding:5px 8px;border-radius:999px;
+  border:1px solid rgba(242,214,127,.42);
+  background:rgba(212,175,55,.08);
+  color:#e7c86d;font-size:7px;
+}
+.admin-card-actions{display:flex;gap:7px;margin-top:auto;padding-top:13px}
+.admin-card-actions button{
+  flex:1;min-height:34px;border-radius:999px;
+  border:1px solid rgba(212,175,55,.22);background:rgba(212,175,55,.06);color:#e7c86d;
+  font-size:8px;font-weight:700;
+}
+.admin-card-actions button:hover{background:rgba(212,175,55,.14);border-color:rgba(242,214,127,.55)}
+.admin-card-actions .danger{border-color:rgba(180,82,82,.24);background:rgba(180,82,82,.05);color:#d99696}
+.admin-card-actions .danger:hover{border-color:rgba(213,111,111,.55);background:rgba(180,82,82,.11)}
+.admin-premium-badge{
+  position:absolute;top:11px;left:11px;border-radius:999px;padding:6px 9px;
+  background:linear-gradient(135deg,#f7df92,#c99927);color:#090909;font-size:7px;font-weight:900;letter-spacing:.08em;
+  box-shadow:0 8px 20px rgba(212,175,55,.22)
+}
+.admin-empty{grid-column:1/-1;border:1px dashed rgba(212,175,55,.24);border-radius:18px!important}
+
+/* Admin drawer */
+.drawer-panel{
+  top:14px!important;right:14px!important;bottom:14px!important;
+  border-radius:28px 0 0 28px!important;
+  border:1px solid rgba(212,175,55,.26)!important;
+  overflow:auto!important;
+}
+.drawer-head{border-radius:28px 0 0 0!important}
+.drawer-close{border-radius:50%!important;border-color:rgba(212,175,55,.24)!important}
+.field input,.field select{border-radius:13px!important;border-color:rgba(255,255,255,.10)!important}
+.field input:focus,.field select:focus{box-shadow:0 0 0 3px rgba(212,175,55,.08)}
+.switch-field{border-radius:16px!important;border-color:rgba(212,175,55,.13)!important;background:#151410!important}
+.crop-stage{border-radius:20px!important;border-color:rgba(212,175,55,.40)!important}
+.crop-placeholder{border-radius:20px!important}
+.crop-controls button{border-radius:999px!important}
+.crop-controls .auto-frame{padding-left:14px!important;padding-right:14px!important}
+.existing-image{border-radius:14px!important;border-color:rgba(212,175,55,.16)!important}
+.existing-image img{border-radius:9px!important}
+.toast{border-radius:14px!important}
+
+@media(max-width:1120px){
+  .admin-roster{grid-template-columns:1fr!important}
+}
+@media(max-width:760px){
+  .service-card{border-radius:24px!important}.service-card:after{border-radius:24px!important}
+  .talent-card-v2{border-radius:23px!important}.talent-media{border-radius:22px 22px 16px 16px!important}
+  .profile-image{border-radius:0!important}
+  .admin-sidebar{width:auto!important}
+  .admin-content{margin-left:0!important}
+  .admin-roster{padding:12px!important}
+  .admin-talent-card{grid-template-columns:105px minmax(0,1fr);min-height:168px}
+  .admin-card-image{min-height:168px}
+  .drawer-panel{top:0!important;right:0!important;bottom:0!important;border-radius:0!important}
+  .drawer-head{border-radius:0!important}
+}
+@media(max-width:430px){
+  .admin-talent-card{grid-template-columns:92px minmax(0,1fr)}
+  .admin-card-content{padding:14px}
+  .admin-card-content h3{font-size:23px}
+  .service-copy span{min-width:0;width:100%}
+}
+
+
+/* === BRANDING · LOGO ORIGINAL PARTNERS CORP === */
+.brand{
+  width:238px!important;
+  display:flex!important;
+  align-items:center;
+}
+.brand img{
+  width:100%!important;
+  height:auto!important;
+  object-fit:contain;
+  filter:drop-shadow(0 8px 20px rgba(212,175,55,.14))!important;
+}
+.footer-brand{width:255px!important}
+.admin-logo{
+  width:205px!important;
+  margin:8px 3px 40px!important;
+}
+.admin-logo img,.auth-brand img{
+  width:100%!important;
+  height:auto!important;
+  object-fit:contain;
+  filter:drop-shadow(0 8px 20px rgba(212,175,55,.13))!important;
+}
+.auth-brand{width:255px!important;max-width:42vw}
+/* Esta versión usa Supabase; ocultamos el aviso heredado de la edición local. */
+.auth-card:after{display:none!important;content:none!important}
+
+@media(max-width:1050px){
+  .brand{width:220px!important}
+}
+@media(max-width:760px){
+  .brand{width:176px!important}
+  .footer-brand{width:215px!important}
+  .admin-logo{width:165px!important;margin:0!important}
+}

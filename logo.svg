@@ -1,0 +1,47 @@
+<svg width="520" height="170" viewBox="0 0 520 170" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Partners Corp</title>
+  <desc id="desc">Logo elegante Partners Corp en dorado con corona y ornamentos</desc>
+  <defs>
+    <linearGradient id="gold" x1="80" y1="18" x2="440" y2="154" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E7A7"/>
+      <stop offset="0.28" stop-color="#E8C45F"/>
+      <stop offset="0.58" stop-color="#D4AF37"/>
+      <stop offset="0.82" stop-color="#B67C18"/>
+      <stop offset="1" stop-color="#F0D47A"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-30%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.83  0 1 0 0 0.60  0 0 1 0 0.16  0 0 0 .38 0" result="goldBlur"/>
+      <feMerge><feMergeNode in="goldBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Crown -->
+  <g stroke="url(#gold)" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+    <path d="M222 46 L236 28 L250 43 L260 20 L270 43 L284 28 L298 46" stroke-width="3.1"/>
+    <path d="M225 47 C245 52 275 52 295 47 L289 59 C272 64 248 64 231 59 Z" stroke-width="2.6"/>
+    <circle cx="236" cy="28" r="2.5" fill="#E7C15B" stroke="none"/>
+    <circle cx="260" cy="20" r="2.7" fill="#F1D678" stroke="none"/>
+    <circle cx="284" cy="28" r="2.5" fill="#E7C15B" stroke="none"/>
+    <path d="M173 66 C198 66 201 54 219 54 C229 54 234 58 239 61" stroke-width="2"/>
+    <path d="M347 66 C322 66 319 54 301 54 C291 54 286 58 281 61" stroke-width="2"/>
+    <path d="M191 59 C198 48 211 47 220 53" stroke-width="1.25" opacity=".75"/>
+    <path d="M329 59 C322 48 309 47 300 53" stroke-width="1.25" opacity=".75"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="260" y="113" text-anchor="middle" fill="url(#gold)" font-family="Cormorant Garamond, Georgia, 'Times New Roman', serif" font-size="65" font-weight="600" letter-spacing="3.2">PARTNERS</text>
+
+  <!-- Corp and ornamental rules -->
+  <g stroke="url(#gold)" fill="none" stroke-linecap="round">
+    <path d="M102 135 H206" stroke-width="1.6"/>
+    <path d="M314 135 H418" stroke-width="1.6"/>
+    <path d="M198 135 l8 -4 l8 4 l-8 4 z" fill="#D4AF37" stroke="none"/>
+    <path d="M306 135 l8 -4 l8 4 l-8 4 z" fill="#D4AF37" stroke="none"/>
+  </g>
+  <text x="260" y="144" text-anchor="middle" fill="url(#gold)" font-family="Manrope, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="10">CORP</text>
+  <g stroke="url(#gold)" fill="none" stroke-linecap="round" opacity=".9">
+    <path d="M244 157 C250 154 255 154 260 160 C265 154 270 154 276 157" stroke-width="1.5"/>
+    <path d="M260 151 V164" stroke-width="1.2"/>
+  </g>
+</svg>

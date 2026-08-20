@@ -31,3 +31,8 @@ SEGURIDAD
 ---------
 La publishable key se usa en el frontend, igual que en el proyecto anterior.
 Nunca coloques una service_role key en archivos públicos.
+
+
+BRANDING
+- Se restauró el logo original de Partners Corp (assets/logo-antiguo.png).
+- Se mantiene la estética ROUND GOLD, favicon, administrador por secciones y conexión al Supabase nuevo.
