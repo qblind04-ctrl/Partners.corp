@@ -36,3 +36,16 @@ Nunca coloques una service_role key en archivos públicos.
 BRANDING
 - Se restauró el logo original de Partners Corp (assets/logo-antiguo.png).
 - Se mantiene la estética ROUND GOLD, favicon, administrador por secciones y conexión al Supabase nuevo.
+
+
+ACTUALIZACION 2026-10-24
+- Home con video autoplay/loop: assets/hero-loop.mp4
+- Nueva seccion de fundador con imagen estilizada: assets/noel-spotlight.png
+
+AUDIO PREVIEW POR TALENTO
+- Se agregó el campo public.talentos.audio_url.
+- Los audios se almacenan en el bucket público `audios` de Supabase Storage.
+- El administrador acepta MP3/WAV/OGG/M4A/WEBM y rechaza previews de más de 15 segundos.
+- Duración recomendada: 10 a 15 segundos.
+- El modal del talento muestra un reproductor dorado solo cuando audio_url existe.
+- Si tu Supabase ya estaba configurado con una versión anterior, ejecuta migration_audio_preview.sql en SQL Editor.

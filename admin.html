@@ -98,6 +98,18 @@
               <div class="crop-controls"><button type="button" id="zoomOut">−</button><input id="zoomRange" type="range" min="1" max="2.4" value="1" step="0.01"><button type="button" id="zoomIn">＋</button><button type="button" class="auto-frame" id="autoFrame">Autoencuadrar</button></div>
               <p class="crop-help">Puedes arrastrar la imagen para ajustar el encuadre antes de guardarla.</p>
               <div class="existing-image" id="existingImage" hidden><img alt="Foto actual"><span>Foto actual · selecciona otra para reemplazarla</span></div>
+
+              <div class="audio-admin-block">
+                <div class="form-section-title audio-title"><span>03</span><div><strong>Preview de audio</strong><small>Fragmento de voz o presentación · recomendado 10–15 s · máximo 15 s.</small></div></div>
+                <label class="upload-card audio-upload-card" for="audioPreview"><span>▶</span><div><strong>Seleccionar audio</strong><small>MP3, WAV, OGG o M4A · máximo 8 MB</small></div></label>
+                <input id="audioPreview" type="file" accept="audio/mpeg,audio/wav,audio/ogg,audio/mp4,audio/x-m4a,audio/webm" hidden>
+                <div class="audio-file-status" id="audioFileStatus" hidden></div>
+                <div class="existing-audio" id="existingAudio" hidden>
+                  <div><strong>Audio actual</strong><small id="existingAudioLabel">Preview guardado en Supabase</small></div>
+                  <audio id="existingAudioPlayer" controls preload="metadata"></audio>
+                  <button type="button" id="removeAudioBtn">Eliminar audio</button>
+                </div>
+              </div>
             </div>
           </div>
 

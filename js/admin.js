@@ -7,6 +7,9 @@ const catEl=document.getElementById('adminCategory');
 const viewPanels=[...document.querySelectorAll('[data-view-panel]')];
 const viewLinks=[...document.querySelectorAll('[data-view-target]')];
 const BUCKET='talentos';
+const AUDIO_BUCKET='audios';
+let selectedAudioFile=null;
+let removeAudioRequested=false;
 let talents=[];
 let currentView='dashboard';
 let crop={img:null,baseScale:1,zoom:1,x:0,y:0,drag:false,lastX:0,lastY:0};
@@ -16,6 +19,12 @@ const ctx=canvas.getContext('2d');
 const placeholder=document.getElementById('cropPlaceholder');
 const range=document.getElementById('zoomRange');
 const existing=document.getElementById('existingImage');
+const audioInput=document.getElementById('audioPreview');
+const audioFileStatus=document.getElementById('audioFileStatus');
+const existingAudio=document.getElementById('existingAudio');
+const existingAudioPlayer=document.getElementById('existingAudioPlayer');
+const existingAudioLabel=document.getElementById('existingAudioLabel');
+const removeAudioBtn=document.getElementById('removeAudioBtn');
 const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const labels={hombres:'Maestro',mujeres:'Maestra',promotores:'Promotor/a'};
 
@@ -78,7 +87,7 @@ function render(){
     <div class="admin-card-content">
       <div class="admin-card-topline"><span>${esc(labels[t.categoria]||'Talento')} · ${esc(t.cobertura||'Local')}</span><strong>${Number(t.precio||0).toLocaleString('es-BO')} Bs</strong></div>
       <h3>${esc(t.nombre)}</h3>
-      <div class="admin-card-location">${esc(t.ciudad||'Bolivia')}</div>
+      <div class="admin-card-location">${esc(t.ciudad||'Bolivia')}${t.audio_url?' · <span class=\"admin-audio-flag\">▶ Audio</span>':''}</div>
       <div class="admin-card-tags">${(Array.isArray(t.especializaciones)?t.especializaciones:[]).slice(0,4).map(x=>`<span>${esc(x)}</span>`).join('')}</div>
       <div class="admin-card-actions"><button data-edit="${esc(t.id)}">Editar</button><button class="danger" data-delete="${esc(t.id)}">Eliminar</button></div>
     </div>
@@ -111,6 +120,12 @@ function resetForm(){
   statusEl.className='form-status';
   resetCrop();
   existing.hidden=true;
+  selectedAudioFile=null;
+  removeAudioRequested=false;
+  if(audioInput) audioInput.value='';
+  if(audioFileStatus){audioFileStatus.hidden=true;audioFileStatus.textContent='';audioFileStatus.className='audio-file-status';}
+  if(existingAudio){existingAudio.hidden=true;}
+  if(existingAudioPlayer){existingAudioPlayer.pause();existingAudioPlayer.removeAttribute('src');existingAudioPlayer.load();}
 }
 
 function openCreate(t=null){
@@ -128,6 +143,11 @@ function openCreate(t=null){
     document.getElementById('cobertura').value=t.cobertura||'';
     document.getElementById('premium').checked=!!t.premium;
     if(t.imagen_url){existing.hidden=false;existing.querySelector('img').src=t.imagen_url;}
+    if(t.audio_url&&existingAudio&&existingAudioPlayer){
+      existingAudio.hidden=false;
+      existingAudioPlayer.src=t.audio_url;
+      if(existingAudioLabel) existingAudioLabel.textContent='Preview guardado · puedes reproducirlo o reemplazarlo';
+    }
   }
   setView('create');
   setTimeout(()=>document.getElementById('nombre').focus(),120);
@@ -206,6 +226,41 @@ async function removeStoredImage(url){
   if(error) console.warn('No se pudo eliminar la imagen anterior:',error.message);
 }
 
+function audioDuration(file){
+  return new Promise((resolve,reject)=>{
+    const url=URL.createObjectURL(file);
+    const audio=document.createElement('audio');
+    audio.preload='metadata';
+    audio.onloadedmetadata=()=>{const d=audio.duration;URL.revokeObjectURL(url);Number.isFinite(d)?resolve(d):reject(new Error('No se pudo leer la duración del audio.'));};
+    audio.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('No se pudo leer el audio.'));};
+    audio.src=url;
+  });
+}
+
+async function uploadAudio(file){
+  const ext=(file.name.split('.').pop()||'mp3').toLowerCase().replace(/[^a-z0-9]/g,'')||'mp3';
+  const filePath=`${crypto.randomUUID()}.${ext}`;
+  const {error}=await supabaseClient.storage.from(AUDIO_BUCKET).upload(filePath,file,{contentType:file.type||'audio/mpeg',upsert:false});
+  if(error) throw error;
+  const {data}=supabaseClient.storage.from(AUDIO_BUCKET).getPublicUrl(filePath);
+  return data.publicUrl;
+}
+
+function storagePathFromBucketUrl(url,bucket){
+  if(!url||!/^https?:\/\//i.test(url)) return null;
+  const marker=`/storage/v1/object/public/${bucket}/`;
+  const i=url.indexOf(marker);
+  if(i<0) return null;
+  return decodeURIComponent(url.slice(i+marker.length).split('?')[0]);
+}
+
+async function removeStoredAudio(url){
+  const path=storagePathFromBucketUrl(url,AUDIO_BUCKET);
+  if(!path) return;
+  const {error}=await supabaseClient.storage.from(AUDIO_BUCKET).remove([path]);
+  if(error) console.warn('No se pudo eliminar el audio anterior:',error.message);
+}
+
 viewLinks.forEach(link=>link.addEventListener('click',()=>setView(link.dataset.viewTarget)));
 document.querySelectorAll('[data-jump]').forEach(btn=>btn.addEventListener('click',()=>{
   if(btn.dataset.jump==='create') openCreate(); else setView(btn.dataset.jump);
@@ -222,6 +277,42 @@ document.getElementById('imagen').addEventListener('change',e=>{
   img.onerror=()=>{URL.revokeObjectURL(url);notify('No se pudo leer la imagen.','error');};
   img.src=url;
 });
+audioInput?.addEventListener('change',async e=>{
+  const file=e.target.files?.[0];
+  selectedAudioFile=null;
+  removeAudioRequested=false;
+  if(!file){if(audioFileStatus)audioFileStatus.hidden=true;return;}
+  if(file.size>8*1024*1024){notify('El audio supera 8 MB.','error');e.target.value='';return;}
+  if(!file.type.startsWith('audio/')){notify('Selecciona un archivo de audio válido.','error');e.target.value='';return;}
+  try{
+    const duration=await audioDuration(file);
+    if(duration>15.25){
+      notify('El preview no puede superar 15 segundos.','error');
+      if(audioFileStatus){audioFileStatus.hidden=false;audioFileStatus.className='audio-file-status error';audioFileStatus.textContent=`${file.name} · ${duration.toFixed(1)} s · demasiado largo`;}
+      e.target.value='';
+      return;
+    }
+    selectedAudioFile=file;
+    if(audioFileStatus){
+      audioFileStatus.hidden=false;
+      audioFileStatus.className='audio-file-status success';
+      audioFileStatus.textContent=`✓ ${file.name} · ${duration.toFixed(1)} s · listo para subir`;
+    }
+    if(existingAudio) existingAudio.hidden=true;
+  }catch(err){
+    console.error(err);notify(err.message||'No se pudo leer el audio.','error');e.target.value='';
+  }
+});
+
+removeAudioBtn?.addEventListener('click',()=>{
+  removeAudioRequested=true;
+  selectedAudioFile=null;
+  if(audioInput) audioInput.value='';
+  if(existingAudioPlayer){existingAudioPlayer.pause();}
+  if(existingAudio) existingAudio.hidden=true;
+  if(audioFileStatus){audioFileStatus.hidden=false;audioFileStatus.className='audio-file-status';audioFileStatus.textContent='El audio actual se eliminará al guardar los cambios.';}
+});
+
 canvas.addEventListener('pointerdown',e=>{if(!crop.img)return;crop.drag=true;crop.lastX=e.clientX;crop.lastY=e.clientY;canvas.setPointerCapture(e.pointerId);});
 canvas.addEventListener('pointermove',e=>{if(!crop.drag)return;const sx=canvas.width/canvas.getBoundingClientRect().width,sy=canvas.height/canvas.getBoundingClientRect().height;crop.x+=(e.clientX-crop.lastX)*sx;crop.y+=(e.clientY-crop.lastY)*sy;crop.lastX=e.clientX;crop.lastY=e.clientY;draw();});
 canvas.addEventListener('pointerup',()=>crop.drag=false);
@@ -238,8 +329,9 @@ form.addEventListener('submit',async e=>{
   const btn=document.getElementById('saveTalentBtn');
   btn.disabled=true;
   statusEl.className='form-status';
-  statusEl.textContent=crop.img?'Procesando y subiendo imagen…':'Guardando en Supabase…';
+  statusEl.textContent=(crop.img||selectedAudioFile)?'Procesando archivos multimedia…':'Guardando en Supabase…';
   let newImageUrl=null;
+  let newAudioUrl=null;
   try{
     const payload={
       nombre:document.getElementById('nombre').value.trim(),
@@ -254,6 +346,12 @@ form.addEventListener('submit',async e=>{
       newImageUrl=await uploadImage(await canvasBlob());
       payload.imagen_url=newImageUrl;
     }
+    if(selectedAudioFile){
+      newAudioUrl=await uploadAudio(selectedAudioFile);
+      payload.audio_url=newAudioUrl;
+    }else if(removeAudioRequested){
+      payload.audio_url=null;
+    }
     let error;
     if(id){
       ({error}=await supabaseClient.from('talentos').update(payload).eq('id',id));
@@ -262,6 +360,8 @@ form.addEventListener('submit',async e=>{
     }
     if(error) throw error;
     if(id&&newImageUrl&&old?.imagen_url&&old.imagen_url!==newImageUrl) await removeStoredImage(old.imagen_url);
+    if(id&&newAudioUrl&&old?.audio_url&&old.audio_url!==newAudioUrl) await removeStoredAudio(old.audio_url);
+    if(id&&removeAudioRequested&&old?.audio_url) await removeStoredAudio(old.audio_url);
     statusEl.className='form-status success';
     statusEl.textContent='Sincronizado correctamente con Supabase.';
     notify(id?'Talento actualizado':'Talento añadido');
@@ -270,6 +370,7 @@ form.addEventListener('submit',async e=>{
   }catch(err){
     console.error(err);
     if(newImageUrl) await removeStoredImage(newImageUrl);
+    if(newAudioUrl) await removeStoredAudio(newAudioUrl);
     statusEl.className='form-status error';
     statusEl.textContent=err.message||'No se pudo guardar en Supabase.';
     notify('No se pudo guardar el talento','error');
@@ -286,6 +387,7 @@ async function removeTalent(id){
     return;
   }
   await removeStoredImage(t.imagen_url);
+  await removeStoredAudio(t.audio_url);
   notify('Talento eliminado');
   await load();
 }
